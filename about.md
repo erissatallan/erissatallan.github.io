@@ -18,4 +18,5 @@ I apply scientific methods and financial tools and rationale to real-world probl
 Activities where I have the opportunity to solve problems bring out the best in me.
 
 ### Contact
-Email aerissat@gmail.com Call +2547 5946 9851
+Email https://mailto:aerissat@gmail.com
+Call +2547 5946 9851
