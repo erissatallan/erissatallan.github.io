@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
-
-module.exports = {
+const nextConfig = {
+  output: 'export',  // Required for static site generation
+  basePath: '',
   images: {
+    unoptimized: true, // Required for static export
     remotePatterns: [
       {
         protocol: "https",
@@ -16,3 +17,5 @@ module.exports = {
     ],
   },
 };
+
+module.exports = nextConfig;
