@@ -15,3 +15,4 @@ export default defineConfig({
   plugins: [deskTool(), visionTool(), codeInput(), table()],
   schema: { types: schemaTypes },
 });
+  
