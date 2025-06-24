@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Metadata } from "next";
-import { singleProjectQuery } from "@/lib/sanity.query";
+import { singleProjectQuery, allProjectSlugsQuery } from "@/lib/sanity.query";
 import type { ProjectType } from "@/types";
 import { PortableText } from "@portabletext/react";
 import { CustomPortableText } from "@/app/components/shared/CustomPortableText";
@@ -40,6 +40,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: project.tagline,
     },
   };
+}
+
+export async function generateStaticParams() {
+  const slugs: string[] = await sanityFetch({
+    query: allProjectSlugsQuery,
+    tags: ["project"],
+  });
+  return slugs.map((slug: string) => ({ project: slug }));
 }
 
 export default async function Project({ params }: Props) {
