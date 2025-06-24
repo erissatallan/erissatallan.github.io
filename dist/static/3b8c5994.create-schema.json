@@ -1,0 +1,994 @@
+[
+  {
+    "fields": [
+      {
+        "name": "language",
+        "type": "string"
+      },
+      {
+        "name": "filename",
+        "type": "string"
+      },
+      {
+        "name": "code",
+        "type": "text"
+      },
+      {
+        "of": [
+          {
+            "type": "number",
+            "title": "Highlighted line"
+          }
+        ],
+        "name": "highlightedLines",
+        "type": "array",
+        "title": "Highlighted lines"
+      }
+    ],
+    "name": "code",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "cells",
+        "type": "array"
+      }
+    ],
+    "name": "tableRow",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "of": [
+          {
+            "type": "tableRow"
+          }
+        ],
+        "name": "rows",
+        "type": "array"
+      }
+    ],
+    "name": "table",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "fullName",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 40
+              },
+              {
+                "flag": "max",
+                "constraint": 80
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "In one short sentence, what do you do?",
+        "name": "headline",
+        "type": "string"
+      },
+      {
+        "options": {
+          "hotspot": true,
+          "metadata": [
+            "lqip"
+          ]
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Upload a profile picture",
+        "fields": [
+          {
+            "name": "alt",
+            "type": "string"
+          }
+        ],
+        "name": "profileImage",
+        "type": "image"
+      },
+      {
+        "rows": 4,
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "shortBio",
+        "type": "text"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "email",
+        "type": "string",
+        "title": "Email Address"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "location",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Write your post content here",
+        "name": "fullBio",
+        "type": "blockContent"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "resumeURL",
+        "type": "file",
+        "title": "Upload Resume"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Write your post content here",
+        "name": "usage",
+        "type": "blockContent"
+      }
+    ],
+    "name": "profile",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "description": "What is the name of the company?",
+        "name": "name",
+        "type": "string",
+        "title": "Company Name"
+      },
+      {
+        "description": "Enter the job title. E.g: Software Developer",
+        "name": "jobTitle",
+        "type": "string"
+      },
+      {
+        "name": "logo",
+        "type": "image",
+        "title": "Company Logo"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "url",
+        "type": "url",
+        "title": "Company Website"
+      },
+      {
+        "rows": 3,
+        "description": "Write a brief description about this role",
+        "name": "description",
+        "type": "text",
+        "title": "Job Description"
+      },
+      {
+        "name": "startDate",
+        "type": "date"
+      },
+      {
+        "name": "endDate",
+        "type": "date"
+      }
+    ],
+    "name": "job",
+    "type": "document"
+  },
+  {
+    "description": "Project Schema",
+    "fields": [
+      {
+        "description": "Enter the name of the project",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "max",
+                "constraint": 60
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "tagline",
+        "type": "string"
+      },
+      {
+        "options": {
+          "source": "name"
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Add a custom slug for the URL or generate one from the name",
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "name": "logo",
+        "type": "image",
+        "title": "Project Logo"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Leaving this URL blank will add a coming soon to the link.",
+        "name": "projectUrl",
+        "type": "url",
+        "title": "Project URL"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Leaving this URL blank will add a \"No Repository\" message to the link.",
+        "name": "repository",
+        "type": "url",
+        "title": "Repository URL"
+      },
+      {
+        "options": {
+          "hotspot": true,
+          "metadata": [
+            "lqip"
+          ]
+        },
+        "description": "Upload a cover image for this project",
+        "fields": [
+          {
+            "name": "alt",
+            "type": "string"
+          }
+        ],
+        "name": "coverImage",
+        "type": "image"
+      },
+      {
+        "description": "Write a full description about this project",
+        "name": "description",
+        "type": "blockContent"
+      }
+    ],
+    "name": "project",
+    "type": "document",
+    "title": "Projects"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 30
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Give your blog post a nice title. Recommend 50 - 70 characters",
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "options": {
+          "source": "title"
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Add a slug to your post or generate it from the title",
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "rows": 4,
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 100
+              }
+            ],
+            "level": "error",
+            "message": "A description of min 100 characters is required"
+          }
+        ],
+        "description": "Summarize your article in 150 - 160 characters.",
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "If this post has been shared somewhere else, add a canonical url that links to it.",
+        "name": "canonicalLink",
+        "type": "url"
+      },
+      {
+        "name": "date",
+        "type": "datetime"
+      },
+      {
+        "options": {
+          "hotspot": true,
+          "metadata": [
+            "lqip"
+          ]
+        },
+        "description": "Upload a cover image for this blog post. Recommended size 1200 x 750",
+        "fields": [
+          {
+            "name": "alt",
+            "type": "string"
+          }
+        ],
+        "name": "coverImage",
+        "type": "image"
+      },
+      {
+        "description": "Add this post to the list of featured posts",
+        "name": "featured",
+        "type": "boolean",
+        "title": "Feature Post"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Add relevant tags that match with your post",
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "tags",
+        "type": "array",
+        "title": "Post Tags"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "to": [
+          {
+            "type": "author"
+          }
+        ],
+        "name": "author",
+        "type": "reference"
+      },
+      {
+        "description": "Write your post content here",
+        "name": "body",
+        "type": "blockContent",
+        "title": "Post Body"
+      },
+      {
+        "description": "Tick this if you will like to publish this post",
+        "name": "isPublished",
+        "type": "boolean",
+        "title": "PUBLISH POST"
+      }
+    ],
+    "name": "Post",
+    "type": "document",
+    "title": "Blog Posts"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "name",
+        "type": "string",
+        "title": "Author Name"
+      },
+      {
+        "options": {
+          "hotspot": true,
+          "metadata": [
+            "lqip"
+          ]
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Upload a profile photo. Recommended size 320 x 320",
+        "name": "photo",
+        "type": "image",
+        "title": "Profile Photo"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "twitterUrl",
+        "type": "url",
+        "title": "Twitter URL"
+      }
+    ],
+    "name": "author",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "url",
+        "type": "url",
+        "title": "Social URL"
+      },
+      {
+        "name": "met",
+        "type": "boolean",
+        "title": "Have you met this hero?"
+      }
+    ],
+    "name": "heroe",
+    "type": "document",
+    "title": "Heroes"
+  },
+  {
+    "description": "Write your post content here",
+    "of": [
+      {
+        "marks": {
+          "annotations": [
+            {
+              "i18nTitleKey": "inputs.portable-text.annotation.link",
+              "options": {
+                "modal": {
+                  "type": "popover"
+                }
+              },
+              "fields": [
+                {
+                  "validation": [
+                    {
+                      "rules": [
+                        {
+                          "flag": "uri",
+                          "constraint": {
+                            "options": {
+                              "scheme": [
+                                "/^http$/",
+                                "/^https$/",
+                                "/^tel$/",
+                                "/^mailto$/"
+                              ],
+                              "allowRelative": true,
+                              "relativeOnly": false,
+                              "allowCredentials": false
+                            }
+                          }
+                        }
+                      ],
+                      "level": "error"
+                    }
+                  ],
+                  "description": "A valid web, email, phone, or relative link.",
+                  "name": "href",
+                  "type": "url",
+                  "title": "Link"
+                }
+              ],
+              "name": "link",
+              "type": "object"
+            }
+          ],
+          "decorators": [
+            {
+              "value": "strong",
+              "title": "Strong"
+            },
+            {
+              "value": "em",
+              "title": "Emphasis"
+            },
+            {
+              "value": "code",
+              "title": "Code"
+            }
+          ]
+        },
+        "lists": [
+          {
+            "value": "bullet",
+            "title": "Bulleted list"
+          },
+          {
+            "value": "number",
+            "title": "Numbered list"
+          }
+        ],
+        "styles": [
+          {
+            "value": "normal",
+            "title": "Normal"
+          },
+          {
+            "value": "h2",
+            "title": "H2"
+          },
+          {
+            "value": "h3",
+            "title": "H3"
+          },
+          {
+            "value": "h4",
+            "title": "H4"
+          },
+          {
+            "value": "blockquote",
+            "title": "Quote"
+          }
+        ],
+        "of": [],
+        "type": "block"
+      },
+      {
+        "options": {
+          "hotspot": true,
+          "metadata": [
+            "lqip",
+            "blurhash",
+            "palette"
+          ]
+        },
+        "fields": [
+          {
+            "description": "Text displayed below the image.",
+            "name": "caption",
+            "type": "string",
+            "title": "Image caption"
+          },
+          {
+            "description": "Important for SEO and accessiblity.",
+            "name": "alt",
+            "type": "string",
+            "title": "Alt text"
+          }
+        ],
+        "type": "image"
+      },
+      {
+        "options": {
+          "language": "typescript",
+          "withFilename": true,
+          "languageAlternatives": [
+            {
+              "title": "Bash",
+              "value": "bash"
+            },
+            {
+              "title": "JavaScript",
+              "value": "js"
+            },
+            {
+              "title": "TypeScript",
+              "value": "ts"
+            },
+            {
+              "title": "TSX",
+              "value": "tsx"
+            },
+            {
+              "title": "JSX",
+              "value": "jsx"
+            },
+            {
+              "title": "CSS",
+              "value": "css"
+            },
+            {
+              "title": "Groq",
+              "value": "graphql"
+            },
+            {
+              "title": "HTML",
+              "value": "html"
+            },
+            {
+              "title": "Json",
+              "value": "json"
+            },
+            {
+              "title": "Markdown",
+              "value": "md"
+            },
+            {
+              "title": "Python",
+              "value": "py"
+            },
+            {
+              "title": "SCSS",
+              "value": "scss"
+            },
+            {
+              "title": "SQL",
+              "value": "sql"
+            },
+            {
+              "title": "Yaml",
+              "value": "yaml"
+            },
+            {
+              "title": "Java",
+              "value": "java"
+            }
+          ]
+        },
+        "type": "code"
+      },
+      {
+        "type": "youtube"
+      },
+      {
+        "type": "customTable",
+        "title": "Table"
+      },
+      {
+        "type": "quiz"
+      }
+    ],
+    "name": "blockContent",
+    "type": "array",
+    "title": "Post Body"
+  },
+  {
+    "fields": [
+      {
+        "initialValue": "Youtube Video",
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "url",
+        "type": "url",
+        "title": "URL"
+      }
+    ],
+    "name": "youtube",
+    "type": "object"
+  },
+  {
+    "fields": [
+      {
+        "name": "table",
+        "type": "table"
+      },
+      {
+        "description": "Provide an accessible description for this table",
+        "name": "caption",
+        "type": "string"
+      }
+    ],
+    "name": "customTable",
+    "type": "object",
+    "title": "Table"
+  },
+  {
+    "fields": [
+      {
+        "name": "question",
+        "type": "string"
+      },
+      {
+        "rows": 4,
+        "description": "What is the answer to the question?",
+        "name": "answer",
+        "type": "text"
+      }
+    ],
+    "name": "quiz",
+    "type": "object"
+  }
+]
