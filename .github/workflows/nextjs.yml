@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_SANITY_PROJECT_ID: "6trsu6rv"
-      "production": "production"
+      NEXT_PUBLIC_SANITY_DATASET: "production"
       NEXT_PUBLIC_SANITY_API_VERSION: "2023-07-21"
       NEXT_PUBLIC_UMAMI_WEBSITE_ID: "806522d4-0aff-426a-a248-919c18dae2c7"
       NEXT_PUBLIC_GISCUS_REPO: "erissatallan/erissatallan.github.io"
@@ -99,7 +99,7 @@ jobs:
     needs: build
     env:
       NEXT_PUBLIC_SANITY_PROJECT_ID: "6trsu6rv"
-      "production": ${{ secrets."production" }}
+      NEXT_PUBLIC_SANITY_DATASET: "production"
       NEXT_PUBLIC_SANITY_API_VERSION: "2023-07-21"
       NEXT_PUBLIC_UMAMI_WEBSITE_ID: "806522d4-0aff-426a-a248-919c18dae2c7"
       NEXT_PUBLIC_GISCUS_REPO: "erissatallan/erissatallan.github.io"
