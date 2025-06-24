@@ -39,3 +39,6 @@ backup.json
 backup.ndjson
 
 .vscode/
+
+# Exclude Studio route from static build
+/app/studio/
