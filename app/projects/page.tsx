@@ -7,6 +7,7 @@ import EmptyState from "../components/shared/EmptyState";
 import { Slide } from "../animation/Slide";
 import { sanityFetch } from "@/lib/sanity.client";
 import PageHeading from "../components/shared/PageHeading";
+import { allProjectSlugsQuery } from "@/lib/sanity.query";
 
 export const metadata: Metadata = {
   title: "Project | Victor Eke",
@@ -20,6 +21,14 @@ export const metadata: Metadata = {
       "https://res.cloudinary.com/victoreke/image/upload/v1692636087/victoreke/projects.png",
   },
 };
+
+export async function generateStaticParams() {
+  const slugs: string[] = await sanityFetch({
+    query: allProjectSlugsQuery,
+    tags: ["project"],
+  });
+  return slugs.map((slug: string) => ({ project: slug }));
+}
 
 export default async function Project() {
   const projects: ProjectType[] = await sanityFetch({
