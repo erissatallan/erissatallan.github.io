@@ -28,6 +28,16 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+      NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
+      NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}
+      NEXT_PUBLIC_UMAMI_WEBSITE_ID: ${{ secrets.NEXT_PUBLIC_UMAMI_WEBSITE_ID }}
+      NEXT_PUBLIC_GISCUS_REPO: ${{ secrets.NEXT_PUBLIC_GISCUS_REPO }}
+      NEXT_PUBLIC_GISCUS_REPOID: ${{ secrets.NEXT_PUBLIC_GISCUS_REPOID }}
+      NEXT_PUBLIC_GISCUS_CATEGORYID: ${{ secrets.NEXT_PUBLIC_GISCUS_CATEGORYID }}
+      NEXT_PUBLIC_GITHUB_USERNAME: ${{ secrets.NEXT_PUBLIC_GITHUB_USERNAME }}
+      NEXT_PUBLIC_GITHUB_JOIN_YEAR: ${{ secrets.NEXT_PUBLIC_GITHUB_JOIN_YEAR }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -78,7 +88,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./.sanity/runtime
+          path: ./out
 
   # Deployment job
   deploy:
@@ -87,6 +97,16 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
+    env:
+      NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+      NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
+      NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}
+      NEXT_PUBLIC_UMAMI_WEBSITE_ID: ${{ secrets.NEXT_PUBLIC_UMAMI_WEBSITE_ID }}
+      NEXT_PUBLIC_GISCUS_REPO: ${{ secrets.NEXT_PUBLIC_GISCUS_REPO }}
+      NEXT_PUBLIC_GISCUS_REPOID: ${{ secrets.NEXT_PUBLIC_GISCUS_REPOID }}
+      NEXT_PUBLIC_GISCUS_CATEGORYID: ${{ secrets.NEXT_PUBLIC_GISCUS_CATEGORYID }}
+      NEXT_PUBLIC_GITHUB_USERNAME: ${{ secrets.NEXT_PUBLIC_GITHUB_USERNAME }}
+      NEXT_PUBLIC_GITHUB_JOIN_YEAR: ${{ secrets.NEXT_PUBLIC_GITHUB_JOIN_YEAR }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
