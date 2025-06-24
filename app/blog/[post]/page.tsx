@@ -18,6 +18,7 @@ import { HiCalendar, HiChat } from "react-icons/hi";
 import { sanityFetch } from "@/lib/sanity.client";
 import { readTime } from "@/app/utils/readTime";
 import PageHeading from "@/app/components/shared/PageHeading";
+import { allPostSlugsQuery } from "@/lib/sanity.query";
 
 type Props = {
   params: {
@@ -76,6 +77,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
     },
   };
+}
+
+export async function generateStaticParams() {
+  const slugs: string[] = await sanityFetch({ query: allPostSlugsQuery, tags: ["Post"] });
+  return slugs.map((slug: string) => ({ post: slug }));
 }
 
 export default async function Post({ params }: Props) {
